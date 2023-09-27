@@ -3,7 +3,7 @@ package manypatterns;
 public class DuckSimulator {
     public static void main(String[] args) {
         DuckSimulator simulator = new DuckSimulator();
-        AbstractDuckFactory duckFactory = new CountingDuckFactory();
+        AbstractDuckFactory duckFactory = new EchoDuckFactory();
 
         simulator.simulate(duckFactory);
     }
@@ -13,19 +13,21 @@ public class DuckSimulator {
         Quackable redheadDuck = duckFactory.createRedheadDuck();
         Quackable duckCall = duckFactory.createDuckCall();
         Quackable rubberDuck = duckFactory.createRubberDuck();
-        Quackable goose = new GooseAdapter(new Goose());
+        Quackable goose = new GooseAdaptor(new Goose());
+        Quackable pigeon = new PigeonAdaptor(new Pigeon());
 
         Flock flockOfDucks = new Flock();
         flockOfDucks.add(mallardDuck);
         flockOfDucks.add(redheadDuck);
         flockOfDucks.add(duckCall);
+        flockOfDucks.add(rubberDuck);
+        flockOfDucks.add(mallardDuck);
 
-        Flock flockOfRubberDuck = new Flock();
-        flockOfRubberDuck.add(rubberDuck);
-        flockOfRubberDuck.add( duckFactory.createRubberDuck());
-        flockOfRubberDuck.add( duckFactory.createRubberDuck());
+        Flock flockOfNotDuck = new Flock();
+        flockOfNotDuck.add(goose);
+        flockOfNotDuck.add(pigeon);
 
-        flockOfDucks.add(flockOfRubberDuck);
+        flockOfDucks.add(flockOfNotDuck);
 
         System.out.println("\nDuck Simulator");
 

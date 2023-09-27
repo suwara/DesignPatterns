@@ -1,10 +1,10 @@
 package manypatterns;
 
-public class GooseAdapter implements Quackable {
+public class GooseAdaptor implements Quackable {
 
     private Goose goose;
 
-    public GooseAdapter(Goose goose) {
+    public GooseAdaptor(Goose goose) {
         this.goose = goose;
     }
     @Override
